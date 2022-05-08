@@ -18,3 +18,12 @@ If the pilot's XP is corrupt, XP Mismatch text with the computed difference will
 ```ExportPilots = false``` If true, will export the pilots to the PilotExport.txt file in the mod folder.  The pilots are exported every time the barracks screen is opened.
 
 ```OnlyExportSyncErrorPilots = false``` If true, will only export pilots that have corrupt XP.
+
+# Installation
+To install, download the BtShowXp.zip from https://github.com/NBKRedSpy/BtShowXp/releases/ and extract to the Battletech Mods folder.
+
+This assumes ModTek has been installed and injected.
+
+
+# Compatibility
+This should be compatible with all mods.
