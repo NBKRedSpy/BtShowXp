@@ -42,8 +42,6 @@ namespace BtShowXp.Patches
                         };
 
 
-                        //Logger.Log($"{DateTime.Now} ! {pilot.Callsign}: Pilot SpentXP mismatch.  Actual: {pilot.SpentXP} Expected: {spentXp} ");
-
                         Logger.LogJson(message);
                     }
                     
@@ -60,7 +58,6 @@ namespace BtShowXp.Patches
                             Expected = totalXpExpected,
                         };
 
-                        //Logger.Log($"{DateTime.Now} ! {pilot.Callsign}: Pilot Total Xp.  Actual: {pilot.TotalXP} Expected: {totalXpExpected} ");
                         Logger.LogJson(message);
                     }
                 }
@@ -80,9 +77,6 @@ namespace BtShowXp.Patches
 
 
                 Logger.LogJson(message);
-
-                //Logger.Log($"{DateTime.Now} {pilot.Callsign} : Spent/Unspent XP {pilot.SpentXP}/{pilot.UnspentXP} Total XP {pilot.TotalXP} " +
-                //    $"Final Difficulty: {contract.Override.finalDifficulty}");
             }
         }
     }

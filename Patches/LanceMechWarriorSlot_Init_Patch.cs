@@ -36,7 +36,7 @@ namespace BtShowXp.Patches
                 //Formatted text for the XP corruption
                 if (skillTotalDelta > 0)
                 {
-                    pilotText.Append($"XP Mismatch: {skillTotalDelta:N0} ");
+                    pilotText.Append($"<color=#ff0000>XP Mismatch: {skillTotalDelta:N0}</color> ");
                 }
             }
 
@@ -45,9 +45,6 @@ namespace BtShowXp.Patches
             {
                 //Add max difficulty
                 pilotText.Append($"Diff: {Core.BTExtendedCeSettings.GetXpCapMinDifficulty(___pilot.TotalXP)} ");
-
-                //Debug
-                //Logger.Log(___pilot.Callsign);
             }
 
             if(pilotText.Length != 0)

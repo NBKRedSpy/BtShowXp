@@ -8,11 +8,11 @@ namespace BtShowXp
 {
     public class BTExtendedCeSettings
     {
-        public bool BTExtendedCeSettingsFound { get; set; }
+        public bool BTExtendedCeSettingsFound { get; set; } = false;
 
-        public List<int> XPDifficultyCaps { get; set; }
+        public List<int> XPDifficultyCaps { get; set; } = new List<int>();
 
-        public bool XPCap { get; set; }
+        public bool XPCap { get; set; } = false;
 
         public bool IsCapEnabled => XPCap && BTExtendedCeSettingsFound;
 

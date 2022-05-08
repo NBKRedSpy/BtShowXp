@@ -8,16 +8,18 @@
   "Enabled": true,
 
   "DLL": "BtShowXp.dll",
-  
+
   "Settings": {
     "ShowPilotXp": true,
     "ShowPilotXpCorruption": true,
     "ShowPilotXpMinDifficulty": true,
+    "ShowPilotXpMinDifficultyWorkAround": true,
 
     "ShowSkillSyncError": false,
     "ShowPilotSummary": false,
     "ExportPilots": false,
-    "OnlyExportSyncErrorPilots": false
+    "OnlyExportSyncErrorPilots": false,
+
   }
 
 }

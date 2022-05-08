@@ -98,8 +98,6 @@ namespace BtShowXp.Patches
             {
                 int skillXpCost = Core.SkillXpCalc.GetXpCost(pilot);
 
-
-                ///todo:  Set the diagree flag.
                 if(skillXpCost != SpentXP)
                 {
                     SpentXpDelta = SpentXP - skillXpCost;
