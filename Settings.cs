@@ -37,5 +37,14 @@ namespace BtShowXp
 
         public bool ShowPilotXpMinDifficulty { get; set; } = true;
 
+
+        /// <summary>
+        /// If true, bumps up the Difficulty estimate by .5 to work around
+        /// BEX Difficulty effectively using the *previous* XP cap.
+        /// </summary>
+        public bool ShowPilotXpMinDifficultyWorkAround { get; set; } = true;
+
+
+
     }
 }

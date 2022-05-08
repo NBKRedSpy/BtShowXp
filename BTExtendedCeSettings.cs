@@ -31,20 +31,17 @@ namespace BtShowXp
         public decimal GetXpCapMinDifficulty(int pilotXp)
         {
 
-            //xpCap not found (-1) is implied to be .5 skulls
-
-            //Debug
-            //int xpCapIndex = XPDifficultyCaps.FindIndex(x => !(pilotXp >= x));
-            //int xpCapIndex = XPDifficultyCaps.FindIndex(x => !(pilotXp <= x));
-            //int xpCapIndex = XPDifficultyCaps.FindLastIndex(x => (pilotXp >= x));
             int xpCapIndex = Math.Max(0, XPDifficultyCaps.FindIndex(x => pilotXp <= x));
 
-            //Debug
-            //Logger.Log($"Index: {xpCapIndex} XP: {XPDifficultyCaps[xpCapIndex]} Pilot XP: {pilotXp}");
-
-
-            //decimal skullDifficulty = ((xpCapIndex +1) / 2m);
             decimal skullDifficulty = (xpCapIndex /2m + .5m);
+
+            //Bug in BEX where the XP ratio is alwasy the XP min.  The ratio is supposed to be computed
+            //  if the Pilot's XP is between the mission XP cap and the previous cap level.
+            if (Core.ModSettings.ShowPilotXpMinDifficultyWorkAround && skullDifficulty < 5)
+            {
+                skullDifficulty += .5m;
+            }
+
             return skullDifficulty;
         }
     }

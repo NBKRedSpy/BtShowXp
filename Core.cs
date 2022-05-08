@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BtShowXp
 {
-    internal static class Core
+    public static class Core
     {
         public static ModSettings ModSettings { get; set; }
 
