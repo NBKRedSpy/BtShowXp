@@ -1,0 +1,14 @@
+﻿{
+  "Name": "BtShowXp",
+  "Version": "0.0.1",
+  "Enabled": true,
+
+  "DLL": "BtShowXp.dll",
+
+  "Settings": {
+    "ShowSkillSyncError": true,
+    "ShowPilotSummary": true,
+    "ExportPilots": true,
+    "OnlyExportSyncErrorPilots":  false,
+  }
+}
