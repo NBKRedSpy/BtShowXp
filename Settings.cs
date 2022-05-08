@@ -30,5 +30,12 @@ namespace BtShowXp
         /// </summary>
         public bool OnlyExportSyncErrorPilots { get; set; } = false;
 
+
+        public bool ShowPilotXp { get; set; } = true;
+
+        public bool ShowPilotXpCorruption { get; set; } = true;
+
+        public bool ShowPilotXpMinDifficulty { get; set; } = true;
+
     }
 }

@@ -24,15 +24,37 @@ namespace BtShowXp.Patches
             //Difference between expected and actual XP (corruption check)
             int skillTotalDelta = ___pilot.TotalXP - (skillXpCost + ___pilot.UnspentXP);
 
-            //Formatted text for the XP corruption
-            string disagreeText = "";
+            StringBuilder pilotText = new StringBuilder();
 
-            if (skillTotalDelta > 0)
+            if (Core.ModSettings.ShowPilotXp)
             {
-                disagreeText = $" XP Mismatch: {skillTotalDelta:N0}";
+                pilotText.Append($"{___callsign.text} [{___pilot.TotalXP:#,#.##} XP] ");
             }
 
-            ___callsign.SetText($"{___callsign.text} [{___pilot.TotalXP:#,#.##} XP]{disagreeText}");
+            if (Core.ModSettings.ShowPilotXpCorruption)
+            {
+                //Formatted text for the XP corruption
+                if (skillTotalDelta > 0)
+                {
+                    pilotText.Append($"XP Mismatch: {skillTotalDelta:N0} ");
+                }
+            }
+
+
+            if (Core.BTExtendedCeSettings.IsCapEnabled && Core.ModSettings.ShowPilotXpMinDifficulty)
+            {
+                //Add max difficulty
+                pilotText.Append($"Diff: {Core.BTExtendedCeSettings.GetXpCapMinDifficulty(___pilot.TotalXP)} ");
+
+                //Debug
+                //Logger.Log(___pilot.Callsign);
+            }
+
+            if(pilotText.Length != 0)
+            {
+                ___callsign.SetText(pilotText.ToString().TrimEnd());
+            }
+            
         }
 
     }

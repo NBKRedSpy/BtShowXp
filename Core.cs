@@ -11,5 +11,8 @@ namespace BtShowXp
         public static ModSettings ModSettings { get; set; }
 
         public static SkillXpCalc SkillXpCalc { get; set; } = new SkillXpCalc();
+
+        public static BTExtendedCeSettings BTExtendedCeSettings { get; set; } = new BTExtendedCeSettings(); 
+
     }
 }

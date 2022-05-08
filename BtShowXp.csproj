@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BTExtendedCeSettings.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Patches\LanceMechWarriorSlot_Init_Patch.cs" />
     <Compile Include="Logger.cs" />
