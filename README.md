@@ -1,12 +1,8 @@
 # BtShowXp
- Battletech Show XP on Pilot
 
+Displays the XP on the Pilot's display.  Useful for determining if a pilot will be over the Battletech Extended XP caps.
 
-Displays the XP on the Pilot's display.  Useful for Battletech Extended XP caps.
-
-If the pilot's XP is corrupt, it will show the XP Mismatch text with the computed difference.
-
-The mod.json 
+If the pilot's XP is corrupt, XP Mismatch text with the computed difference will be shown.
 
 ![image](https://user-images.githubusercontent.com/54865934/167276422-3e81da6f-3b16-43e1-a88f-74080dec0c9f.png)
 
