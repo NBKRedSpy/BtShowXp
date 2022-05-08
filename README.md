@@ -9,7 +9,7 @@ If the pilot's XP is corrupt, XP Mismatch text with the computed difference will
 
 # Settings
 
-## Note - these options effectively duplicate the UI display, but can be used to export the pilots in a JSON format.
+### Note - these options effectively duplicate the UI display, but can be used to export the pilots in a JSON format.
 
 ```ShowSkillSyncError = false``` If true, if the pilot's XP is corrupt (Total XP doesn't match skill and unspent XP), the pilot info will be written to the the Log.txt in the mod's folder.
 
