@@ -1,14 +1,21 @@
 ﻿{
   "Name": "BtShowXp",
-  "Version": "0.0.1",
+  "Version": "1.0.0",
+  "Description": "Displays the pilot's XP on the Pilot placard.'",
+  "Author": "NBK_RedSpy",
+  "Website": "https://github.com/NBKRedSpy/BtShowXp",
+  
   "Enabled": true,
 
   "DLL": "BtShowXp.dll",
 
   "Settings": {
-    "ShowSkillSyncError": true,
-    "ShowPilotSummary": true,
-    "ExportPilots": true,
-    "OnlyExportSyncErrorPilots":  false,
-  }
+    "ShowSkillSyncError": false,
+    "ShowPilotSummary": false,
+    "ExportPilots": false,
+    "OnlyExportSyncErrorPilots": false
+  },
+
+
+  
 }

@@ -1,7 +1,0 @@
-c:\src\BtShowXp\BtShowXp\obj\Debug\BtShowXp.csproj.AssemblyReference.cache
-c:\src\BtShowXp\BtShowXp\obj\Debug\BtShowXp.csproj.CoreCompileInputs.cache
-c:\src\BtShowXp\BtShowXp\bin\Debug\mod.json
-c:\src\BtShowXp\BtShowXp\bin\Debug\BtShowXp.dll
-c:\src\BtShowXp\BtShowXp\bin\Debug\BtShowXp.pdb
-c:\src\BtShowXp\BtShowXp\obj\Debug\BtShowXp.dll
-c:\src\BtShowXp\BtShowXp\obj\Debug\BtShowXp.pdb
