@@ -98,7 +98,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy /y "$(TargetPath)" "E:\Games\Steam\steamapps\common\BATTLETECH\Mods\BtShowXp\"
-del BtShowXP.zip
-"C:\Program Files\7-Zip\7z.exe" a BtShowXP.zip BtShowXp.dll mod.json</PostBuildEvent>
+rd /q /s BtShowXP
+robocopy . BtShowXP BtShowXp.dll mod.json
+"C:\Program Files\7-Zip\7z.exe" a BtShowXP.zip BtShowXP</PostBuildEvent>
   </PropertyGroup>
 </Project>
