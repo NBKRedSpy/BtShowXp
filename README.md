@@ -38,6 +38,8 @@ This should be compatible with all mods.
 To work around the BT_Extended_CE XP Cap bug, the BT_Extended_CE\mod.json can be modified to move the Caps up one level.  
 Once the pilots require a 5 skull mission to progress, disable XPCap or the pilots will only gain 10% XP.
 
+This workaround will show a minimum 1.0 difficulty mission on the pilot placard for pilots under 5200 XP, but the pilot will not be limited to 10%.  All levels after 1.0 will be correct.
+
 Set XPDifficultyCaps to:
 ```
 "XPDifficultyCaps" : [ 5200, 5200, 8000, 11600, 15600, 21600, 36000, 55600, 81200, 999999999 ],
