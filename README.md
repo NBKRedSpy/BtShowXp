@@ -2,7 +2,7 @@
 
 Optionally displays the Pilot's Total XP, XP Corruption, and/or minimum mission difficulty to earn full XP with BEX CE's XP cap.
 
-![image](https://user-images.githubusercontent.com/54865934/167276422-3e81da6f-3b16-43e1-a88f-74080dec0c9f.png)
+![image](https://user-images.githubusercontent.com/54865934/167323249-daec91ee-8dbc-4da6-aad0-bd22ee932d7a.png)
 
 
 # mod.json Settings
