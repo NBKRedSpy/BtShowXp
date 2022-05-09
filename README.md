@@ -34,6 +34,9 @@ This should be compatible with all mods.
 
 
 # BEX XP Cap Workaround
+
+Please note that the XP Cap bug only affects the "full xp difficulty" by half a skull.  So if the pilot requires at least a 2 skull mission to get full XP, the bug would require a 2.5 skull mission to get the full XP.  The Battletech Extended team has confirmed the support ticket.
+
 To work around the BT_Extended_CE XP Cap bug, the BT_Extended_CE\mod.json can be modified to move the Caps up one level.  
 Once the pilots require a 5 skull mission to progress, disable XPCap or the pilots will only gain 10% XP.
 
