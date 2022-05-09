@@ -11,7 +11,7 @@ Setting | Description
 |```ShowPilotXp = true``` | Shows the pilot's XP on the pilot placard.
 |```ShowPilotXpCorruption = true``` | Displays red XP text on the pilot placard if the pilot's Total XP does not match the skills and unspent XP.  The number is the computed difference between expected and actual XP.
 |```ShowPilotXpMinDifficulty = true``` | If Battletech Extended CE is installed and XP Caps is enabled, the minimum mission difficulty to get full XP will be shown.
-|```ShowPilotXpMinDifficultyWorkAround = true``` | If ```ShowPilotXpMinDifficulty``` is enabled, adds .5 difficulty to the computed difficulty to work around BEX's XP Cap level bug.  Will be removed when the BEX issue is resolved.  See [XP Cap Workaround](#bex-xp-cap-workaround)] below.
+|```ShowPilotXpMinDifficultyWorkAround = true``` | If ```ShowPilotXpMinDifficulty``` is enabled, adds .5 difficulty to the computed difficulty to work around BEX's XP Cap level bug.  Will be removed when the BEX issue is resolved.  See [XP Cap Workaround](#bex-xp-cap-workaround) below.
 
 ### The options below are used for debugging
 
