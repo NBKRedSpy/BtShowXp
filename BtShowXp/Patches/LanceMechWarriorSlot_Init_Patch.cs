@@ -36,7 +36,7 @@ namespace BtShowXp.Patches
                 //Formatted text for the XP corruption
                 if (skillTotalDelta > 0)
                 {
-                    pilotText.Append($"<color=#ff0000>XP Mismatch: {skillTotalDelta:N0}</color> ");
+                    pilotText.Append($"<color=#ff0000>{skillTotalDelta:N0}</color> ");
                 }
             }
 

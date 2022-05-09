@@ -10,7 +10,7 @@ Optionally displays the Pilot's Total XP, XP Corruption, and/or minimum mission 
 Setting | Description
 ---|---|
 |```ShowPilotXp = true``` | Shows the pilot's XP on the pilot placard.
-|```ShowPilotXpCorruption = true``` | Displays red "XP Mismatch" text on the pilot placard if the pilot's Total XP does not match the skills and unspent XP.  The number is the computed difference between expected and actual XP.
+|```ShowPilotXpCorruption = true``` | Displays red XP text on the pilot placard if the pilot's Total XP does not match the skills and unspent XP.  The number is the computed difference between expected and actual XP.
 |```ShowPilotXpMinDifficulty = true``` | If Battletech Extended CE is installed and XP Caps is enabled, the minimum mission difficulty to get full XP will be shown.
 |```ShowPilotXpMinDifficultyWorkAround = true``` | If ```ShowPilotXpMinDifficulty``` is enabled, adds .5 difficulty to the computed difficulty to work around BEX's XP Cap level bug.  Will be removed when the BEX issue is resolved.  See [XP Cap Workaround](#bex-xp-cap-workaround)] below.
 
@@ -35,15 +35,16 @@ This should be compatible with all mods.
 
 
 # BEX XP Cap Workaround
-Rather than using the ```ShowPilotXpMinDifficultyWorkAround``` option for BEX's XP Difficulty Caps, the BT_Extended_CE\mod.json could be modified to move the Caps up one level.  
+To work around the BT_Extended_CE XP Cap bug, the BT_Extended_CE\mod.json can be modified to move the Caps up one level.  
+Once the pilots require a 5 skull mission to progress, disable XPCap or the pilots will only gain 10% XP.
 
-Change this:
-```
-"XPDifficultyCaps" : [ 5200, 8000, 11600, 15600, 21600, 36000, 55600, 81200, 113600, 999999999 ],
-```
-
-To this:
+Set XPDifficultyCaps to:
 ```
 "XPDifficultyCaps" : [ 5200, 5200, 8000, 11600, 15600, 21600, 36000, 55600, 81200, 999999999 ],
 ```
-Make sure this mod's ```ShowPilotXpMinDifficultyWorkAround``` is set to false if the workaround is used.
+
+How to disable XPCaps for the last XP Cap (5 star missions)
+```
+"XPCap" : false,
+```
+
