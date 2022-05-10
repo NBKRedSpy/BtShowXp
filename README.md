@@ -16,6 +16,8 @@ If a pilot has corrupt XP (as shown by red text), the pilot can be reset by goin
 Make sure there pilot is not currently selected or the click will not work.  This is a known issue.
 Currently each pilot must be changed individually.
 
+## Steam Backups
+The Battletech carrear backups on a Steam install should be under Steam\userdata\3847327\637090\remote\C0\SGS1
 
 # mod.json Settings
 
