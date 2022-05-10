@@ -9,8 +9,13 @@ Also has the option to reset the Spent XP for a pilot that has corrupt XP.
 
 
 # Resetting Corrupt XP
+It is recommend to make a backup of the game saves before using.  This has been tested locally and appears to work correctly, but there could be unexpected consequences.  An alterantive is to the the Retrainer mod and reset each pilot.
+
 If a pilot has corrupt XP (as shown by red text), the pilot can be reset by going to the barracks by clicking the pilot's portrait while holding down control (ctrl+click).
+
 Make sure there pilot is not currently selected or the click will not work.  This is a known issue.
+Currently each pilot must be changed individually.
+
 
 # mod.json Settings
 
