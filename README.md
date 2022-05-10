@@ -9,8 +9,14 @@ Also has the option to reset the Spent XP for a pilot that has corrupt XP.
 
 
 # Resetting Corrupt XP
+## Dislaimers
 It is recommend to make a backup of the game saves before using.  This has been tested locally and appears to work correctly, but there could be unexpected consequences.  An alterantive is to the the Retrainer mod and reset each pilot.
 
+The Battletech campaign save directory for a Steam install is at Steam\userdata\3847327\637090\remote\C0\SGS1 . 
+
+I am unsure at this point why the Spent XP vs Unspent XP gets out of sync over time with various mods so user beware that there may be some reason for the mismatch that I am unaware of.  
+
+## Usage
 If a pilot has corrupt XP (as shown by red text), the pilot can be reset by going to the barracks by clicking the pilot's portrait while holding down control (ctrl+click).
 
 Make sure there pilot is not currently selected or the click will not work.  This is a known issue.
