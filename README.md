@@ -2,7 +2,15 @@
 
 Optionally displays the Pilot's Total XP, XP Corruption, and/or minimum mission difficulty to earn full XP with BEX CE's XP cap.
 
+Also has the option to reset the Spent XP for a pilot that has corrupt XP.
+
 ![image](https://user-images.githubusercontent.com/54865934/167340694-3a7b06e3-da51-44ce-b20d-23f89ca9f49f.png)
+
+
+
+# Resetting Corrupt XP
+If a pilot has corrupt XP (as shown by red text), the pilot can be reset by going to the barracks by clicking the pilot's portrait while holding down control (ctrl+click).
+Make sure there pilot is not currently selected or the click will not work.  This is a known issue.
 
 # mod.json Settings
 
