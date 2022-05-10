@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -27,5 +28,35 @@ namespace BtShowXp
             return Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
         }
 
+        public static string GetStackTrace()
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            // Create a StackTrace that captures
+            // filename, line number, and column
+            // information for the current thread.
+            StackTrace st = new StackTrace(true);
+            for (int i = 0; i < st.FrameCount; i++)
+            {
+                // Note that high up the call stack, there is only
+                // one stack frame.
+                StackFrame sf = st.GetFrame(i);
+
+                sb.AppendLine($"Method: {sf.GetMethod()} Line: {sf.GetFileLineNumber()}");
+            }
+
+            return sb.ToString();
+        }
+
+        public static bool IsMethodInStack(string methodName)
+        {
+            // Create a StackTrace that captures
+            // filename, line number, and column
+            // information for the current thread.
+            StackTrace st = new StackTrace(true);
+
+            return st.GetFrames().Any(x => x.GetMethod().Name == methodName);
+        }
     }
 }

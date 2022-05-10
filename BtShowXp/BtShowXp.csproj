@@ -39,6 +39,9 @@
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="InControl">
+      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\InControl.dll</HintPath>
+    </Reference>
     <Reference Include="ModTek">
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\Mods\ModTek\ModTek.dll</HintPath>
       <Private>False</Private>
@@ -68,6 +71,9 @@
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
@@ -79,6 +85,7 @@
     <Compile Include="Patches\LanceMechWarriorSlot_Init_Patch.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Init.cs" />
+    <Compile Include="Patches\SGBarracksMWDetailPanel_OnSkillsSectionClicked_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patches\AAR_UnitStatusWidget_FillInPilotData_Patch.cs" />
     <Compile Include="Settings.cs" />
