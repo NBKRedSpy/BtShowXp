@@ -103,9 +103,9 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y "$(TargetPath)" "E:\Games\Steam\steamapps\common\BATTLETECH\Mods\BtShowXp\"
-rd /q /s BtShowXP
-robocopy . BtShowXP BtShowXp.dll mod.json
-"C:\Program Files\7-Zip\7z.exe" a BtShowXP.zip BtShowXP</PostBuildEvent>
+    <PostBuildEvent>xcopy /y "$(TargetPath)" "E:\Games\Steam\steamapps\common\BATTLETECH\Mods\$(ProjectName)\"
+rd /q /s  $(ProjectName)
+robocopy . $(ProjectName) $(ProjectName).dll mod.json
+"C:\Program Files\7-Zip\7z.exe" a $(ProjectName).zip $(ProjectName)</PostBuildEvent>
   </PropertyGroup>
 </Project>
