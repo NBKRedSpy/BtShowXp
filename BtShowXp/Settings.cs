@@ -15,28 +15,20 @@ namespace BtShowXp
         public bool ShowSkillSyncError { get; set; } = false;
 
         /// <summary>
-        /// Always show the Pilot's XP summary.  
-        /// Spent Xp, Unspent xp, total XP
+        /// Displays the pilot's total XP (spent and unspent)
         /// </summary>
-        public bool ShowPilotSummary { get; set; } = false;
-
-        /// <summary>
-        /// If true, will export all the pilots when the barricks are opened.
-        /// </summary>
-        public bool ExportPilots { get; set; } = false;
-
-        /// <summary>
-        /// Only export pilots where the XP values do not match expectations.
-        /// </summary>
-        public bool OnlyExportSyncErrorPilots { get; set; } = false;
-
-
         public bool ShowPilotXp { get; set; } = true;
 
+        /// <summary>
+        /// If true and the pilot's spent XP does match the skills cost, shows the difference.
+        /// </summary>
         public bool ShowPilotXpCorruption { get; set; } = true;
-
+        
+        /// <summary>
+        /// If true, shows the minimum difficulty for the pilot to get full XP when 
+        /// using the BEX XP Cap
+        /// </summary>
         public bool ShowPilotXpMinDifficulty { get; set; } = true;
-
 
         /// <summary>
         /// If true, bumps up the difficulty estimate by .5 to work around

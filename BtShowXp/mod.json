@@ -14,12 +14,6 @@
     "ShowPilotXpCorruption": true,
     "ShowPilotXpMinDifficulty": true,
     "ShowPilotXpMinDifficultyWorkAround": true,
-
-    "ShowSkillSyncError": false,
-    "ShowPilotSummary": false,
-    "ExportPilots": false,
-    "OnlyExportSyncErrorPilots": false
-
   }
 
 }

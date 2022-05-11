@@ -13,6 +13,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 namespace BtShowXp.Patches
 {
+
+    /// <summary>
+    /// Reset Corrupt XP functionality.
+    /// </summary>
     [HarmonyPatch(typeof(SGBarracksMWDetailPanel), "OnSkillsSectionClicked", MethodType.Normal)]
     public static class SGBarracksMWDetailPanel_OnSkillsSectionClicked_Patch
     {

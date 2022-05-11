@@ -11,11 +11,14 @@ using System.Threading.Tasks;
 namespace BtShowXp.Patches
 {
 
-
+    /// <summary>
+    /// Changes the pilot's Call sign text to have the callsign, total XP, any corrupt XP 
+    /// and the mission difficulty for full XP when running BEX XP Caps
+    /// </summary>
     [HarmonyPatch(typeof(SGBarracksRosterSlot), nameof(SGBarracksRosterSlot.Refresh))]
-    public class LanceMechWarriorSlot_Init_Patch
+    public class SetPilotXpText
     {
-        public static void Postfix(Pilot ___pilot, LocalizableText ___callsign)
+        public static void Postfix( Pilot ___pilot, LocalizableText ___callsign)
         {
 
             //Computed actual XP cost for the skills on the pilot.
@@ -43,8 +46,30 @@ namespace BtShowXp.Patches
 
             if (Core.BTExtendedCeSettings.IsCapEnabled && Core.ModSettings.ShowPilotXpMinDifficulty)
             {
-                //Add max difficulty
-                pilotText.Append($"Diff: {Core.BTExtendedCeSettings.GetXpCapMinDifficulty(___pilot.TotalXP)} ");
+                decimal minXPCapDifficulty = Core.BTExtendedCeSettings.GetXpCapMinDifficulty(___pilot.TotalXP);
+
+                bool showPilotIsUnderXpCap = false;
+
+                //If this is the lance prep screen, check if the pilot is under the XP cap.
+                if(GetLanceConfigurationContract.Contract != null)
+                {
+                    ///This should be the contract difficulty before any suprise difficulty is added.
+                    decimal difficutly = GetLanceConfigurationContract.Contract.Difficulty;
+
+                    if (difficutly >= (minXPCapDifficulty * 2))
+                    {
+                        showPilotIsUnderXpCap = true;   
+                    }
+                }
+
+                if(showPilotIsUnderXpCap)
+                {
+                    pilotText.Append($"<color=#4CFF00>Diff: {minXPCapDifficulty} </color>");
+                }
+                else
+                {
+                    pilotText.Append($"Diff: {minXPCapDifficulty}");
+                }
             }
 
             if(pilotText.Length != 0)

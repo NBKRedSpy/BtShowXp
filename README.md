@@ -2,11 +2,11 @@
 
 Optionally displays the Pilot's Total XP, XP Corruption, and/or minimum mission difficulty to earn full XP with BEX CE's XP cap.
 
-Also has the option to reset the Spent XP for a pilot that has corrupt XP.
+When configurating a lance for a contract, the Difficulty text will be Green if the pilot will get full XP from the current contract.
+
+Has the ability to reset the Spent XP for a pilot where the Spent XP does not match the pilot's total skill XP cost.
 
 ![image](https://user-images.githubusercontent.com/54865934/167340694-3a7b06e3-da51-44ce-b20d-23f89ca9f49f.png)
-
-
 
 # Resetting Corrupt XP
 ## Dislaimers
@@ -33,16 +33,6 @@ Setting | Description
 |```ShowPilotXpCorruption = true``` | Displays red XP text on the pilot placard if the pilot's Total XP does not match the skills and unspent XP.  The number is the computed difference between expected and actual XP.
 |```ShowPilotXpMinDifficulty = true``` | If Battletech Extended CE is installed and XP Caps is enabled, the minimum mission difficulty to get full XP will be shown.
 |```ShowPilotXpMinDifficultyWorkAround = true``` | If ```ShowPilotXpMinDifficulty``` is enabled, adds .5 difficulty to the computed difficulty to work around BEX's XP Cap level bug.  Will be removed when the BEX issue is resolved.  See [XP Cap Workaround](#bex-xp-cap-workaround) below.
-
-### The options below are used for debugging
-
-Setting | Description
----|---|
-|```ShowSkillSyncError = false``` | If the pilot's XP is corrupt (Total XP doesn't match skill and unspent XP), the pilot info will be written to the the Log.txt in the mod's folder.
-|```ShowPilotSummary = false``` | Always writes the pilot information to the Log.txt
-|```ExportPilots = false```  |Will export the pilots to the PilotExport.txt file in the mod folder.  The pilots are exported every time the barracks screen is opened.
-|```OnlyExportSyncErrorPilots = false``` | If true, will only export pilots that have corrupt XP.
-
 
 # Installation
 To install, download the BtShowXp.zip from https://github.com/NBKRedSpy/BtShowXp/releases/ and extract to the Battletech Mods folder.
