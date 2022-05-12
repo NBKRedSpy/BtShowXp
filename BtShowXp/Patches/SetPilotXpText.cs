@@ -54,9 +54,9 @@ namespace BtShowXp.Patches
                 if(GetLanceConfigurationContract.Contract != null)
                 {
                     ///This should be the contract difficulty before any suprise difficulty is added.
-                    decimal difficutly = GetLanceConfigurationContract.Contract.Difficulty;
+                    int difficutly = GetLanceConfigurationContract.Contract.Difficulty;
 
-                    if (difficutly >= (minXPCapDifficulty * 2))
+                    if (difficutly / 2m >= minXPCapDifficulty)
                     {
                         showPilotIsUnderXpCap = true;   
                     }
