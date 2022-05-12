@@ -18,7 +18,7 @@ namespace BtShowXp.Patches
     /// Reset Corrupt XP functionality.
     /// </summary>
     [HarmonyPatch(typeof(SGBarracksMWDetailPanel), "OnSkillsSectionClicked", MethodType.Normal)]
-    public static class SGBarracksMWDetailPanel_OnSkillsSectionClicked_Patch
+    public static class SpentXpReset
     {
         private static readonly UIColorRef Backfill = LazySingletonBehavior<UIManager>.Instance.UILookAndColorConstants.PopupBackfill;
 

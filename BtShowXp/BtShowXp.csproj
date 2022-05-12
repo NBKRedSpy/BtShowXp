@@ -86,7 +86,7 @@
     <Compile Include="Patches\SetPilotXpText.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Init.cs" />
-    <Compile Include="Patches\SGBarracksMWDetailPanel_OnSkillsSectionClicked_Patch.cs" />
+    <Compile Include="Patches\SpentXpReset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SkillXpCalc.cs" />

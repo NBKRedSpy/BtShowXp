@@ -50,11 +50,17 @@ namespace BtShowXp.Patches
 
                 bool showPilotIsUnderXpCap = false;
 
+                int difficutly = -1;
+                Contract contract = GetLanceConfigurationContract.Contract;
+
                 //If this is the lance prep screen, check if the pilot is under the XP cap.
-                if(GetLanceConfigurationContract.Contract != null)
+                if (contract != null)
                 {
-                    ///This should be the contract difficulty before any suprise difficulty is added.
-                    int difficutly = GetLanceConfigurationContract.Contract.Difficulty;
+                    ///The contract difficutly shown in the UI, which does not show any secret difficulty increases 
+                    ///for the mission.
+                    ///
+                    ///Should always have an override, but being safe since original code tests for null override sometimes.
+                    difficutly = contract.Override?.GetUIDifficulty() ?? contract.Difficulty;
 
                     if (difficutly / 2m >= minXPCapDifficulty)
                     {
@@ -62,7 +68,7 @@ namespace BtShowXp.Patches
                     }
                 }
 
-                if(showPilotIsUnderXpCap)
+                if (showPilotIsUnderXpCap)
                 {
                     pilotText.Append($"<color=#4CFF00>Diff: {minXPCapDifficulty} </color>");
                 }
