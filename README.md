@@ -8,6 +8,9 @@ Has the ability to reset the Spent XP for a pilot where the Spent XP does not ma
 
 ![image](https://user-images.githubusercontent.com/54865934/167939147-cde13f5c-5675-43ae-9691-81da2d5b62d5.png)
 
+## Difficulty Note
+The actual difficulty of a mission can go up or down from the displayed difficulty.  The mod may show a green difficulty highlight even though the final difficulty will be under the minimum difficulty and only get 10% XP (default XP Cap setting).
+
 # mod.json Settings
 
 Setting | Description
