@@ -104,8 +104,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy /y "$(TargetPath)" "E:\Games\Steam\steamapps\common\BATTLETECH\Mods\$(ProjectName)\"
+IF NOT ERRORLEVEL 0 ( echo copy failed &amp; exit /b )
 rd /q /s  $(ProjectName)
 robocopy . $(ProjectName) $(ProjectName).dll mod.json
-"C:\Program Files\7-Zip\7z.exe" a $(ProjectName).zip $(ProjectName)</PostBuildEvent>
+"C:\Program Files\7-Zip\7z.exe" a $(ProjectName).zip $(ProjectName)
+
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
