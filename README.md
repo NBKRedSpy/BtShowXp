@@ -46,6 +46,7 @@ This assumes ModTek has been installed and injected.
 
 # Compatibility
 This should be compatible with all mods.
+Safe to add to and remove from existing saves.
 
 
 # BEX XP Cap Workaround
