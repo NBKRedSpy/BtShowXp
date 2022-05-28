@@ -12,7 +12,8 @@ The rest of the document contains various customization and install options, whi
 
 ![image](https://user-images.githubusercontent.com/54865934/170802733-f957724f-1dcf-44c6-9af8-6eeca049e158.png)
 
-![image](https://user-images.githubusercontent.com/54865934/170802992-8b96bdd7-6bcb-48e2-84c4-6a414f0900b6.png)
+![image](https://user-images.githubusercontent.com/54865934/170803851-4a3bb34d-8fa4-4e0d-84bd-c38ed25d0b80.png)
+
 
 # Upgrading
 For users upgrading from versions prior to 1.1, it is recommended to overwrite the mod.json in the BTShowXp install directory.
