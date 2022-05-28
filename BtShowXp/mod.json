@@ -1,6 +1,6 @@
 ﻿{
   "Name": "BtShowXp",
-  "Version": "1.0.4.2",
+  "Version": "1.1.0.0",
   "Description": "Displays the pilot's XP on the Pilot placard.'",
   "Author": "NBK_RedSpy",
   "Website": "https://github.com/NBKRedSpy/BtShowXp",
@@ -8,12 +8,18 @@
   "Enabled": true,
 
   "DLL": "BtShowXp.dll",
-
+  "OptionallyDependsOn": [ "BT_Extended_CE" ],
   "Settings": {
     "ShowPilotXp": true,
     "ShowPilotXpCorruption": true,
     "ShowPilotXpMinDifficulty": true,
-    "ShowPilotXpMinDifficultyWorkAround": true
+
+    "ShowPilotXpMinDifficultyWorkAround": false,
+    "UseBexXpCapFix": true,
+
+    "DebugOutput": false,
+
+    "XpPercentageDisplay": "BasedOnPatchStatus"
   }
 
 }

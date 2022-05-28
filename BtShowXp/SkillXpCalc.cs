@@ -18,13 +18,8 @@ namespace BtShowXp
         /// <summary>
         /// The map of XP to each level.  Level 1 is at the 0 index.
         /// </summary>
-        public List<int> LevelExpMap{ get; set; }
+        public XPTotalCosts LevelExpMap { get; set; } = new XPTotalCosts();
         
-        
-        public SkillXpCalc()
-        {
-            LevelExpMap = CreateLevelExpMap();
-        }
 
         public int GetXpCost(Pilot pilot)
         {
@@ -37,23 +32,6 @@ namespace BtShowXp
 
             return totalXp;
         }
-
-        private List<int> CreateLevelExpMap()
-        {
-            List<int> levelExpMap = new List<int>();
-
-            int totalXp = 0;
-
-            for (int i = 0; i < 10; i++)
-            {
-                totalXp += i * i * 100;
-
-                levelExpMap.Add(totalXp);
-            }
-
-            return levelExpMap;
-        }
-
 
     }
 }

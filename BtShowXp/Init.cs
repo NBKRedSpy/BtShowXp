@@ -14,23 +14,36 @@ namespace BtShowXp
     {
         public static void Init(string directory, string settingsJSON)
         {
-            ModSettings modSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<ModSettings>(settingsJSON);
-            Core.ModSettings = modSettings;
-
-            var harmony = HarmonyInstance.Create("io.github.nbk_redspy.BtShowXp");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-
-
-            //Try to load BTExtended CE settings if available.
             try
-            {
-                Core.BTExtendedCeSettings = LoadBTExtendedCeSettings();
-            }
-            catch (Exception e)
-            {
-                Logger.Log(e.ToString());
+            {            
+                ModSettings modSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<ModSettings>(settingsJSON);
+                Core.ModSettings = modSettings;
 
-                Core.BTExtendedCeSettings = BTExtendedCeSettings.BexNotFound();
+                var harmony = HarmonyInstance.Create("io.github.nbk_redspy.BtShowXp");
+                harmony.PatchAll(Assembly.GetExecutingAssembly());
+
+                //Try to load BTExtended CE settings if available.
+                try
+                {
+                    Core.BTExtendedCeSettings = LoadBTExtendedCeSettings();
+                }
+                catch (Exception e)
+                {
+                    Logger.Log(e.ToString());
+
+                    Core.BTExtendedCeSettings = BTExtendedCeSettings.BexNotFound();
+                }
+
+                if (Core.ModSettings.DebugOutput)
+                {
+                    Logger.LogDebug($"------------ {DateTime.Now}");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Logger.Log(ex.ToString());
+                throw;
             }
         }
 

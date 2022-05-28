@@ -39,6 +39,10 @@
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Extended_CE">
+      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\Mods\BT_Extended_CE\Extended_CE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="InControl">
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\InControl.dll</HintPath>
     </Reference>
@@ -80,8 +84,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BexXpCapPatchUtility.cs" />
     <Compile Include="BTExtendedCeSettings.cs" />
     <Compile Include="Core.cs" />
+    <Compile Include="Patches\BexDifficultyXPCapDisable.cs" />
+    <Compile Include="Patches\DifficultyXPCapFix.cs" />
     <Compile Include="Patches\GetLanceConfigurationContract.cs" />
     <Compile Include="Patches\SetPilotXpText.cs" />
     <Compile Include="Logger.cs" />
@@ -91,6 +98,8 @@
     <Compile Include="Settings.cs" />
     <Compile Include="SkillXpCalc.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="XpPercentageDisplay.cs" />
+    <Compile Include="XPTotalCosts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="mod.json">

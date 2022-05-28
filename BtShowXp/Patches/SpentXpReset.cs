@@ -114,7 +114,6 @@ namespace BtShowXp.Patches
 
             SGBarracksWidget barracks;
 
-
             //barracks.Reset(pilot);
 
             FieldInfo barracksField = AccessTools.Field(typeof(SGBarracksMWDetailPanel), "barracks");

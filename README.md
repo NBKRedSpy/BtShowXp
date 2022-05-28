@@ -1,12 +1,22 @@
 # BtShowXp
 
-Optionally displays the Pilot's Total XP, XP Corruption, and/or minimum mission difficulty to earn full XP with BEX CE's XP cap.
+Optionally displays the Pilot's Total XP, XP Corruption, minimum mission difficulty to earn full XP with BEX CE's XP cap, and/or BEX's Level cap percentage of XP award.
 
-When configurating a lance for a contract, the Difficulty text will be Green if the pilot will get full XP from the current contract.
+When configurating a lance for a contract, the Difficulty text will be Green if the pilot will get full XP from the current contract.  If the pilot is exactly at the XP cap level of the mission, the percentage of the max XP for the mission will be displayed.
 
-Has the ability to reset the Spent XP for a pilot where the Spent XP does not match the pilot's total skill XP cost.
+Other features:
+* Contains a temporary fix for BEX which restores the "percentage of XP awarded" logic.
+* Can reset pilot's spent XP when the Spent XP is "corrupted" and does not match the skills purchased.
 
-![image](https://user-images.githubusercontent.com/54865934/167939147-cde13f5c-5675-43ae-9691-81da2d5b62d5.png)
+The rest of the document contains various customization and install options, which most users will not need.
+
+![image](https://user-images.githubusercontent.com/54865934/170802733-f957724f-1dcf-44c6-9af8-6eeca049e158.png)
+
+![image](https://user-images.githubusercontent.com/54865934/170802992-8b96bdd7-6bcb-48e2-84c4-6a414f0900b6.png)
+
+# Upgrading
+For users upgrading from versions prior to 1.1, it is recommended to overwrite the mod.json in the BTShowXp install directory.
+
 
 ## Difficulty Note
 The actual difficulty of a mission can go up or down from the displayed difficulty.  The mod may show a green difficulty highlight even though the final difficulty will be under the minimum difficulty and only get 10% XP (default XP Cap setting).
@@ -14,13 +24,30 @@ The actual difficulty of a mission can go up or down from the displayed difficul
 # mod.json Settings
 
 Setting | Description
----|---|
+|---|---|
 |```ShowPilotXp = true``` | Shows the pilot's XP on the pilot placard.
 |```ShowPilotXpCorruption = true``` | Displays red XP text on the pilot placard if the pilot's Total XP does not match the skills and unspent XP.  The number is the computed difference between expected and actual XP.
 |```ShowPilotXpMinDifficulty = true``` | If Battletech Extended CE is installed and XP Caps is enabled, the minimum mission difficulty to get full XP will be shown.
-|```ShowPilotXpMinDifficultyWorkAround = true``` | If ```ShowPilotXpMinDifficulty``` is enabled, adds .5 difficulty to the computed difficulty to work around BEX's XP Cap level bug.  Will be removed when the BEX issue is resolved.  See [XP Cap Workaround](#bex-xp-cap-workaround) below.
+|```ShowPilotXpMinDifficultyWorkAround = false``` | If ```ShowPilotXpMinDifficulty``` is enabled, adds .5 difficulty to the computed difficulty to work around BEX's XP Cap level bug.  Will be removed when the BEX issue is resolved.  If ```UseBexXpCapFix``` is enabled, set this to false.  For more info on the original bug, see [XP Cap Workaround](#bex-xp-cap-workaround) below.
+|```UseBexXpCapFix = true```| If true, will fix the BEX  XP Cap Bug with a temporary patch.  If Extended_CE.dll's XP cap logic has been changed, then the Cap fix will not be enabled.
+|```XpPercentageDisplay = "BasedOnPatchStatus"```| Controls when the XP Cap XP award percentage is displayed.  See the [XpPercentageDisplay](#xppercentagedisplay) section below.
+|```DebugOutput = false```|If true, will output additional logging.
+
+## XpPercentageDisplay
+For most users, the default value will not need to be changed.
+
+|Setting|Description|
+|--|--|
+|Always|Always show, regardless of other settings.|
+|Off|Never show|
+|BasedOnPatchStatus|Will be shown if the BEX visual workaround is disabled and the BEX XP Cap bug fix is enabled.|
+
+When BEX fixes the XP cap bug in the BEX source code, use Always instead.
+
 
 # Resetting Corrupt XP
+
+
 ## Dislaimers
 It is recommend to make a backup of the game saves before using.  This has been tested locally and appears to work correctly, but there could be unexpected consequences.
 
@@ -39,7 +66,7 @@ The Battletech carrear backups on a Steam install should be under Steam\userdata
 
 
 # Installation
-To install, download the BtShowXp.zip from https://github.com/NBKRedSpy/BtShowXp/releases/ and extract to the Battletech Mods folder.
+To install, download the BtShowXp.zip from the releases section and extract to the Battletech Mods folder.
 
 This assumes ModTek has been installed and injected.
 
@@ -50,6 +77,8 @@ Safe to add to and remove from existing saves.
 
 
 # BEX XP Cap Workaround
+
+**Update**:  The default settings of this mod includes a temporary fix for BEX's XP Cap bug.  This section describes the bug, but is effectively mitigated.
 
 Please note that the XP Cap bug only affects the "full xp difficulty" by half a skull.  So if the pilot requires at least a 2 skull mission to get full XP, the bug would require a 2.5 skull mission to get the full XP.  The Battletech Extended team has confirmed the support ticket.
 

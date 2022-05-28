@@ -11,6 +11,9 @@ namespace BtShowXp.Tests
     [TestClass()]
     public class BTExtendedCeSettingsTests
     {
+
+        //Not using DI for this simple project.  :(
+
         [TestMethod()]
         public void GetXpCapMinDifficultyTest()
         {
@@ -23,17 +26,31 @@ namespace BtShowXp.Tests
                 XPDifficultyCaps = new List<int>
                 {
                     5200
-                    ,8000
-                    ,11600
-                    ,15600
-                    ,21600
-                    ,36000
-                    ,55600
-                    ,81200
-                    ,113600
-                    ,999999999
-                }
+                    , 8000
+                    , 11600
+                    , 15600
+                    , 21600
+                    , 36000
+                    , 55600
+                    , 81200
+                    , 113600
+                    , 999999999
+                },
             };
+
+            PrivateType accessor = new PrivateType(typeof(Core));
+            accessor.SetStaticProperty("BexExistsCheckCompleted", true);
+
+            //Bypass init logic
+            var bexSettings = new Extended_CE.ModSettings()
+            {
+                XPCap = true,
+                MinXPMultiplier = .1f,
+            };
+
+            accessor.SetStaticField("_bexModSettings", bexSettings);
+
+
 
             Core.ModSettings = new ModSettings()
             {
@@ -41,44 +58,21 @@ namespace BtShowXp.Tests
             };
 
 
-            decimal expected;
-            decimal actual;
+           
 
-            expected = .5m;
-            actual = settings.GetXpCapMinDifficulty(500);
+            GetXpCapMinDifficultyTest(settings, 500, 1, 1);
+            GetXpCapMinDifficultyTest(settings, 6000,2, .71m);
+            GetXpCapMinDifficultyTest(settings, 10800, 3, .22m);
+            GetXpCapMinDifficultyTest(settings, 11800, 4, .95m);
+            //XP Cap minium hit.  Bumps to next difficulty
+            GetXpCapMinDifficultyTest(settings, 54000, 8, 1m);
 
-            Assert.AreEqual(expected, actual);
+            GetXpCapMinDifficultyTest(settings, 120000, 10, .99m);
 
+            //First level
+            GetXpCapMinDifficultyTest(settings, 100, 1, 1m);
 
-            expected = 1m;
-            actual = settings.GetXpCapMinDifficulty(6000);
-
-            Assert.AreEqual(expected, actual);
-
-            expected = 1.5m;
-            actual = settings.GetXpCapMinDifficulty(10800);
-
-            Assert.AreEqual(expected, actual);
-
-
-            expected = 2m;
-            actual = settings.GetXpCapMinDifficulty(11800);
-
-            Assert.AreEqual(expected, actual);
-
-
-            expected = 3.5m;
-            actual = settings.GetXpCapMinDifficulty(54000);
-
-            Assert.AreEqual(expected, actual);
-
-
-            expected = 5m;
-            actual = settings.GetXpCapMinDifficulty(120000);
-
-            Assert.AreEqual(expected, actual);
-
-
+            GetXpCapMinDifficultyTest(settings, 0, 1, 1m);
         }
 
         [TestMethod()]
@@ -108,48 +102,34 @@ namespace BtShowXp.Tests
             Core.ModSettings = new ModSettings()
             {
                 ShowPilotXpMinDifficultyWorkAround = true,
+                UseBexXpCapFix = false
             };
 
-
-            decimal expected;
-            decimal actual;
-
-            expected = 1m;
-            actual = settings.GetXpCapMinDifficulty(500);
-
-            Assert.AreEqual(expected, actual);
-
-
-            expected = 1.5m;
-            actual = settings.GetXpCapMinDifficulty(6000);
-
-            Assert.AreEqual(expected, actual);
-
-            expected = 2m;
-            actual = settings.GetXpCapMinDifficulty(10800);
-
-            Assert.AreEqual(expected, actual);
-
-
-            expected = 2.5m;
-            actual = settings.GetXpCapMinDifficulty(11800);
-
-            Assert.AreEqual(expected, actual);
-
-
-            expected = 4m;
-            actual = settings.GetXpCapMinDifficulty(54000);
-
-            Assert.AreEqual(expected, actual);
-
-
-            expected = 5m;
-            actual = settings.GetXpCapMinDifficulty(120000);
-
-            Assert.AreEqual(expected, actual);
+            GetXpCapMinDifficultyTest(settings, 500 , 2, null);
+            GetXpCapMinDifficultyTest(settings, 6000, 3, null);
+            GetXpCapMinDifficultyTest(settings, 10800, 4, null);
+            GetXpCapMinDifficultyTest(settings, 11800, 5, null);
+            GetXpCapMinDifficultyTest(settings, 54000, 8, null);
+            GetXpCapMinDifficultyTest(settings, 120000, 10, null);
         }
 
 
+        void GetXpCapMinDifficultyTest(BTExtendedCeSettings settings, int pilotXp, int expectedMinDifficulty,
+                        decimal? expectedMaxLeveCapPercentage)
+        {
+
+            int actualMinDifficulty;
+            decimal actualMaxLeveCapPercentage;
+
+            settings.GetXpCapMinDifficulty(pilotXp, out actualMinDifficulty, out actualMaxLeveCapPercentage);
+
+            Assert.AreEqual(expectedMinDifficulty, actualMinDifficulty);
+            if (expectedMaxLeveCapPercentage.HasValue)
+            {
+                Assert.AreEqual((double)expectedMaxLeveCapPercentage, (double)actualMaxLeveCapPercentage, .01);
+            }
+            
+        }
 
 
     }

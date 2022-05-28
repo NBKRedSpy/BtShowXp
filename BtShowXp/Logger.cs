@@ -27,6 +27,7 @@ namespace BtShowXp
 
         public static void LogDebug(string line)
         {
+            if (Core.ModSettings.DebugOutput == false) return;
             using (StreamWriter streamWriter = new StreamWriter(Logger.LogFilePath, true))
                 streamWriter.WriteLine(line);
         }
@@ -37,6 +38,13 @@ namespace BtShowXp
                 streamWriter.WriteLine(line);
         }
 
+        public static void LogJsonDebug(object data)
+        {
+            if (Core.ModSettings.DebugOutput == false) return;
+
+            LogJson(data);
+        }
+        
         /// <summary>
         /// Writes an object as JSON text.
         /// </summary>
@@ -59,7 +67,7 @@ namespace BtShowXp
         public static void Clear()
         {
             using (StreamWriter streamWriter = new StreamWriter(Logger.LogFilePath, false))
-                streamWriter.WriteLine(DateTime.Now.ToLongTimeString() + " Extended_CE Init");
+                streamWriter.WriteLine("-------------- " + DateTime.Now.ToLongTimeString() + " Cleared");
         }
     }
 }

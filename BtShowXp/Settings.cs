@@ -31,12 +31,22 @@ namespace BtShowXp
         public bool ShowPilotXpMinDifficulty { get; set; } = true;
 
         /// <summary>
+        /// If true, will patch the BEX_CE float cast bug.  If the BT_Extended_CE XP Cap patch
+        /// has been modifed, UseBexXpCapFix will not be used regardless of the setting.
+        /// </summary>
+        public bool UseBexXpCapFix { get; set; } = true;
+
+        /// <summary>
         /// If true, bumps up the difficulty estimate by .5 to work around
         /// BEX Difficulty effectively using the *previous* XP cap.
         /// </summary>
-        public bool ShowPilotXpMinDifficultyWorkAround { get; set; } = true;
+        public bool ShowPilotXpMinDifficultyWorkAround { get; set; } = false;
 
+        /// <summary>
+        /// Controls the XP Level Cap percentage display.
+        /// </summary>
+        public XpPercentageDisplay XpPercentageDisplay { get; set; } = XpPercentageDisplay.BasedOnPatchStatus;
 
-
+        public bool DebugOutput { get; set; } = false;
     }
 }
