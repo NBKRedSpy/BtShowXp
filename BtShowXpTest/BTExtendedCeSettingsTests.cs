@@ -64,7 +64,7 @@ namespace BtShowXp.Tests
             GetXpCapMinDifficultyTest(settings, 6000,2, .71m);
             GetXpCapMinDifficultyTest(settings, 10800, 3, .22m);
             GetXpCapMinDifficultyTest(settings, 11800, 4, .95m);
-            //XP Cap minium hit.  Bumps to next difficulty
+            //XP Cap minimum hit.  Bumps to next difficulty
             GetXpCapMinDifficultyTest(settings, 54000, 8, 1m);
 
             GetXpCapMinDifficultyTest(settings, 120000, 10, .99m);
@@ -117,18 +117,14 @@ namespace BtShowXp.Tests
         void GetXpCapMinDifficultyTest(BTExtendedCeSettings settings, int pilotXp, int expectedMinDifficulty,
                         decimal? expectedMaxLeveCapPercentage)
         {
+            PilotMinXp pilotMinXp = settings.GetXpCapMinDifficulty(pilotXp);
 
-            int actualMinDifficulty;
-            decimal actualMaxLeveCapPercentage;
+            Assert.AreEqual(expectedMinDifficulty, pilotMinXp.MinimumContractDifficulty);
 
-            settings.GetXpCapMinDifficulty(pilotXp, out actualMinDifficulty, out actualMaxLeveCapPercentage);
-
-            Assert.AreEqual(expectedMinDifficulty, actualMinDifficulty);
             if (expectedMaxLeveCapPercentage.HasValue)
             {
-                Assert.AreEqual((double)expectedMaxLeveCapPercentage, (double)actualMaxLeveCapPercentage, .01);
+                Assert.AreEqual((double)expectedMaxLeveCapPercentage, (double)pilotMinXp.MaxDifficultyPercentage, .01);
             }
-            
         }
 
 

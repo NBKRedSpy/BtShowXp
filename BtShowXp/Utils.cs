@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleTech;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,6 +12,7 @@ namespace BtShowXp
 {
     public static class Utils
     {
+
         public static decimal TruncateDecimal(decimal value, int precision)
         {
             decimal step = (decimal)Math.Pow(10, precision);

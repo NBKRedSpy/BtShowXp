@@ -32,6 +32,11 @@ namespace BtShowXp
                 streamWriter.WriteLine(line);
         }
 
+
+        public static void Log(object line)
+        {
+            Log(line.ToString());
+        }
         public static void Log(string line)
         {
             using (StreamWriter streamWriter = new StreamWriter(Logger.LogFilePath, true))

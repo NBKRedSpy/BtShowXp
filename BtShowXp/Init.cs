@@ -17,7 +17,23 @@ namespace BtShowXp
             try
             {            
                 ModSettings modSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<ModSettings>(settingsJSON);
+
+                //Default for colors since JSON will reuse existing collections
+                if(modSettings.DifficultyColors.Count == 0)
+                {
+                    modSettings.DifficultyColors.AddRange(new string[] {
+                        "#4CFF00",
+                        "#FFDA38",
+                        "#FF4242",
+                        "#8EC6FF",
+                        "#D582E0"
+                    });
+                }
+
+
                 Core.ModSettings = modSettings;
+
+
 
                 var harmony = HarmonyInstance.Create("io.github.nbk_redspy.BtShowXp");
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
@@ -38,6 +54,8 @@ namespace BtShowXp
                 {
                     Logger.LogDebug($"------------ {DateTime.Now}");
                 }
+
+                
             }
 
             catch (Exception ex)

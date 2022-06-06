@@ -10,9 +10,11 @@ Other features:
 
 The rest of the document contains various customization and install options, which most users will not need.
 
-![image](https://user-images.githubusercontent.com/54865934/170802733-f957724f-1dcf-44c6-9af8-6eeca049e158.png)
+![Item Example](Media/ItemExample.png)
 
-![image](https://user-images.githubusercontent.com/54865934/170803851-4a3bb34d-8fa4-4e0d-84bd-c38ed25d0b80.png)
+![Pilot List](Media/PilotList.png)
+
+
 
 
 # Upgrading
@@ -21,6 +23,21 @@ For users upgrading from versions prior to 1.1, it is recommended to overwrite t
 
 ## Difficulty Note
 The actual difficulty of a mission can go up or down from the displayed difficulty.  The mod may show a green difficulty highlight even though the final difficulty will be under the minimum difficulty and only get 10% XP (default XP Cap setting).
+
+
+# Difficulty Colors
+
+The difficulty (Diff: N.N) is colored based on how close to the contract difficulty the pilot is.
+
+The purpose is to allow the user to quickly identify the pilots that can obtain the highest possible XP for the mission.
+
+To return to the single White/Green color scheme from previous versions, change the DifficultyColors setting in mod.json to only contain a single entry.  
+Previous versions of this mod used green (#4CFF00).
+
+Default Colors:
+
+![Difficulty Delta Default Colors](Media/Difficulty%20Delta%20Defaults.png)
+
 
 # mod.json Settings
 
@@ -33,6 +50,9 @@ Setting | Description
 |```UseBexXpCapFix = true```| If true, will fix the BEX  XP Cap Bug with a temporary patch.  If Extended_CE.dll's XP cap logic has been changed, then the Cap fix will not be enabled.
 |```XpPercentageDisplay = "BasedOnPatchStatus"```| Controls when the XP Cap XP award percentage is displayed.  See the [XpPercentageDisplay](#xppercentagedisplay) section below.
 |```DebugOutput = false```|If true, will output additional logging.
+|```XpCapPercentageColors```| The colors for the "percentage of XP" section of the display.  Delta25 to Delta100 is each 25% step for the percentage.
+|```DifficultyColors```| A list of colors for the difficulty delta.  See [Difficulty Colors](#difficulty-colors)
+
 
 ## XpPercentageDisplay
 For most users, the default value will not need to be changed.
@@ -45,9 +65,13 @@ For most users, the default value will not need to be changed.
 
 When BEX fixes the XP cap bug in the BEX source code, use Always instead.
 
+Default Colors:
+
+![XP percentage default colors](Media/XP%20Percentage%20Defaults.png)
 
 # Resetting Corrupt XP
 
+Before resetting the XP, try saving and reloading the game.  This will sometimes correct the XP.
 
 ## Dislaimers
 It is recommend to make a backup of the game saves before using.  This has been tested locally and appears to work correctly, but there could be unexpected consequences.
@@ -63,7 +87,9 @@ Make sure there pilot is not currently selected or the click will not work.  Thi
 Currently each pilot must be changed individually.
 
 ## Steam Backups
-The Battletech carrear backups on a Steam install should be under Steam\userdata\3847327\637090\remote\C0\SGS1
+The Battletech career backups on a Steam install should be under Steam\userdata\3847327\637090\remote\C#\SGS#
+
+Where # is a number.
 
 
 # Installation
@@ -81,20 +107,9 @@ Safe to add to and remove from existing saves.
 
 **Update**:  The default settings of this mod includes a temporary fix for BEX's XP Cap bug.  This section describes the bug, but is effectively mitigated.
 
-Please note that the XP Cap bug only affects the "full xp difficulty" by half a skull.  So if the pilot requires at least a 2 skull mission to get full XP, the bug would require a 2.5 skull mission to get the full XP.  The Battletech Extended team has confirmed the support ticket.
+Currently BEX contains a bug where a pilot will never recieve a percentage of XP when at the end of a XP level.
 
-To work around the BT_Extended_CE XP Cap bug, the BT_Extended_CE\mod.json can be modified to move the Caps up one level.  
-Once the pilots require a 5 skull mission to progress, disable XPCap or the pilots will only gain 10% XP.
+Effectively this requires .5 more difficulty to obtain XP beyond the XP Cap minimum.
+However, when the pilot requires 5 star missions, this bug will effectively limit the pilot to the XP Cap minimum XP (10% by default).
 
-This workaround will show a minimum 1.0 difficulty mission on the pilot placard for pilots under 5200 XP, but the pilot will not be limited to 10%.  All levels after 1.0 will be correct.
-
-Set XPDifficultyCaps to:
-```
-"XPDifficultyCaps" : [ 5200, 5200, 8000, 11600, 15600, 21600, 36000, 55600, 81200, 999999999 ],
-```
-
-How to disable XPCaps for the last XP Cap (5 star missions)
-```
-"XPCap" : false,
-```
-
+The bug has been accepted by the BEX team.

@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Ce = Extended_CE;
 
-//Debug
-//[assembly: InternalsVisibleTo("BtShowXpTest")]
 namespace BtShowXp
 {
     public static class Core
@@ -17,9 +15,6 @@ namespace BtShowXp
         public static ModSettings ModSettings { get; set; }
 
         public static SkillXpCalc SkillXpCalc { get; set; } = new SkillXpCalc();
-
-
-        //Todo:  change to use BEX directly instead.
 
         public static BTExtendedCeSettings BTExtendedCeSettings { get; set; } = new BTExtendedCeSettings();
 

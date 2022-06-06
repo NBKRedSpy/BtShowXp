@@ -1,6 +1,6 @@
 ﻿{
   "Name": "BtShowXp",
-  "Version": "1.1.0.0",
+  "Version": "1.2.0.0",
   "Description": "Displays the pilot's XP on the Pilot placard.'",
   "Author": "NBK_RedSpy",
   "Website": "https://github.com/NBKRedSpy/BtShowXp",
@@ -18,8 +18,24 @@
     "UseBexXpCapFix": true,
 
     "DebugOutput": false,
+    "DebugOutputPilots": false,
 
-    "XpPercentageDisplay": "BasedOnPatchStatus"
+    "XpPercentageDisplay": "BasedOnPatchStatus",
+
+    "XpCapPercentageColors": {
+      "Delta25": "#FF4242",
+      "Delta50": "#F59338",
+      "Delta75": "#FFDA38",
+      "Delta100": "#4CFF00",
+    },
+
+    "DifficultyColors": [
+      "#4CFF00",
+      "#FFDA38",
+      "#FF4242",
+      "#8EC6FF",
+      "#D582E0",
+    ],
   }
 
 }
