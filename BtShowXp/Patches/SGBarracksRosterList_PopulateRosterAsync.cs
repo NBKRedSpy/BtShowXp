@@ -90,14 +90,22 @@ namespace BtShowXp.Patches
                 .Distinct()
                 .ToList();
 
-            int highestDifficultyLevel = pilotXpList.Max(x => x.MinimumContractDifficulty);
+            if(pilotXpList.Count  == 0)
+            {
+                //All levels are lower
+                return new List<PilotContractMinXp>();
+            }
+            else
+            {
+                int highestDifficultyLevel = pilotXpList.Max(x => x.MinimumContractDifficulty);
 
-            return pilotXpList
-                .OrderByDescending( x => x.MinimumContractDifficulty == highestDifficultyLevel)
-                .OrderByDescending(x => x.IsPercentage)
-                .ThenByDescending(x => x.MinimumContractDifficulty)
-                .Take(count)
-                .ToList();
+                return pilotXpList
+                    .OrderByDescending(x => x.MinimumContractDifficulty == highestDifficultyLevel)
+                    .OrderByDescending(x => x.IsPercentage)
+                    .ThenByDescending(x => x.MinimumContractDifficulty)
+                    .Take(count)
+                    .ToList();
+            }
         }
     }
 }
