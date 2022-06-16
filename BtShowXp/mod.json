@@ -1,6 +1,6 @@
 ﻿{
   "Name": "BtShowXp",
-  "Version": "1.2.0.0",
+  "Version": "1.2.1.0",
   "Description": "Displays the pilot's XP on the Pilot placard.'",
   "Author": "NBK_RedSpy",
   "Website": "https://github.com/NBKRedSpy/BtShowXp",
@@ -8,7 +8,7 @@
   "Enabled": true,
 
   "DLL": "BtShowXp.dll",
-  "OptionallyDependsOn": [ "BT_Extended_CE" ],
+  "OptionallyDependsOn": [ "BT_Extended_CE", "SoftExperienceCap"],
   "Settings": {
     "ShowPilotXp": true,
     "ShowPilotXpCorruption": true,
