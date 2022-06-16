@@ -42,7 +42,7 @@ namespace BtShowXp.Patches
 
                 if (Core.ModSettings.ShowPilotXp)
                 {
-                    pilotText.Append($"{___callsign.text} [{___pilot.TotalXP:#,#.##} XP] ");
+                    pilotText.Append($" [{___pilot.TotalXP:#,#.##} XP] ");
                 }
 
                 if (Core.ModSettings.ShowPilotXpCorruption)
@@ -116,7 +116,8 @@ namespace BtShowXp.Patches
                 
                 if (pilotText.Length != 0)
                 {
-                    ___callsign.SetText(pilotText.ToString().TrimEnd());
+                    string displayText = pilotText.ToString().Trim();
+                    ___callsign.SetText("{0} {1}", ___callsign.text,displayText);
                 }
 
             }

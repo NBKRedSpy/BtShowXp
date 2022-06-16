@@ -8,7 +8,7 @@
   "Enabled": true,
 
   "DLL": "BtShowXp.dll",
-  "OptionallyDependsOn": [ "BT_Extended_CE" ],
+  "OptionallyDependsOn": [ "BT_Extended_CE", "SoftExperienceCap"],
   "Settings": {
     "ShowPilotXp": true,
     "ShowPilotXpCorruption": true,
