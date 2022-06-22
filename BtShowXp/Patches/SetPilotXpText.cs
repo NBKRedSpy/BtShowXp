@@ -42,7 +42,10 @@ namespace BtShowXp.Patches
 
                 if (Core.ModSettings.ShowPilotXp)
                 {
-                    pilotText.Append($" [{___pilot.TotalXP:#,#.##} XP] ");
+
+                    decimal xpInThousands = (___pilot.TotalXP / 100) / 10m;
+
+                    pilotText.Append($" [{xpInThousands}K XP] ");
                 }
 
                 if (Core.ModSettings.ShowPilotXpCorruption)
@@ -61,6 +64,14 @@ namespace BtShowXp.Patches
                 {
                     string displayText;
 
+                    PilotMinXp pilotMinXp = Core.BTExtendedCeSettings.GetXpCapMinDifficulty(___pilot.TotalXP);
+
+                    if (Core.ModSettings.DebugOutputPilots)
+                    {
+                        XpDebugOutput(___pilot, ___callsign, skillTotalDelta, contract, pilotMinXp.MinimumContractDifficulty,
+                            pilotMinXp.MaxDifficultyPercentage);
+                    }
+
                     //Clan gets full XP
                     if (contract.Override.targetTeam.FactionValue.IsClan)
                     {
@@ -68,15 +79,6 @@ namespace BtShowXp.Patches
                     }
                     else
                     {
-                        PilotMinXp pilotMinXp = Core.BTExtendedCeSettings.GetXpCapMinDifficulty(___pilot.TotalXP);
-
-                        if (Core.ModSettings.DebugOutputPilots)
-                        {
-                            XpDebugOutput(___pilot, ___callsign, skillTotalDelta, contract, pilotMinXp.MinimumContractDifficulty, 
-                                pilotMinXp.MaxDifficultyPercentage);
-                        }
-
-
                         //The difficulty in display "skull" format.
                         decimal skullMinXPCapDifficulty = pilotMinXp.MinimumContractDifficulty / 2m;
 
