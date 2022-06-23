@@ -19,5 +19,10 @@ namespace BtShowXp.Patches
         {
             return contract.Override?.GetUIDifficulty() ?? contract.Difficulty;
         }
+
+        public static bool TargetFactionIsClan(this Contract contract)
+        {
+            return contract.Override.targetTeam.FactionValue.IsClan;
+        }
     }
 }

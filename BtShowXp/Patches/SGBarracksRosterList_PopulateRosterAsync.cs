@@ -44,8 +44,11 @@ namespace BtShowXp.Patches
 
                     if (Core.ModSettings.ShowPilotXpMinDifficulty)
                     {
-                        //The difficulty displayed to the user.
-                        int uiDifficulty = Contract.GetUiDifficulty();
+                        //emulate 5 star mission is clan, else use the difficulty that is displayed to the user.
+                        int uiDifficulty = Contract.TargetFactionIsClan() ? Core.ClanDifficultyEmulation : Contract.GetUiDifficulty();
+
+                        //Get the colors for the top pilot's minimum difficulties.  Used to color difficulty text relative to
+                        //  the most experienced pilot that is under the contract's difficulty.
                         PilotContractMinXpTopEntries = GetTopPilotXpLevels(pilotList, uiDifficulty, Core.ModSettings.DifficultyColors.Count);
                     }
                 }
