@@ -72,45 +72,37 @@ namespace BtShowXp.Patches
                             pilotMinXp.MaxDifficultyPercentage);
                     }
 
-                    //Clan gets full XP
-                    if (contract.Override.targetTeam.FactionValue.IsClan)
+                    
+                    //The difficulty in display "skull" format.
+                    decimal skullMinXPCapDifficulty = pilotMinXp.MinimumContractDifficulty / 2m;
+
+                    string capPercentageText = "";
+
+                    //For clan use the emulated difficulty (5 star)
+                    int contractDifficulty = contract.TargetFactionIsClan() ? Core.ClanDifficultyEmulation : contract.GetUiDifficulty();
+
+                    if (ShowXpPercentage() && contractDifficulty == pilotMinXp.MinimumContractDifficulty && 
+                        pilotMinXp.MaxDifficultyPercentage <= .999m)
                     {
-                        displayText = $"<color=#4CFF00>Clan</color>";
+                        capPercentageText = Core.ModSettings.XpCapPercentageColors.GetCapPercentageText(pilotMinXp.MaxDifficultyPercentage);
+
+                    }
+
+                    if (contractDifficulty >= pilotMinXp.MinimumContractDifficulty)
+                    {
+
+                        PilotContractMinXp pilotContractMinXp = new PilotContractMinXp(pilotMinXp, contractDifficulty);
+
+                        int topColorIndex = GetLanceConfigurationContract.PilotContractMinXpTopEntries.FindIndex(x => x.Equals(pilotContractMinXp));
+
+                        string color = Core.ModSettings.DifficultyColors.GetColor(topColorIndex);
+                        
+                        displayText = ($"<color={color}>Diff: {skullMinXPCapDifficulty}</color>{capPercentageText}");
+
                     }
                     else
                     {
-                        //The difficulty in display "skull" format.
-                        decimal skullMinXPCapDifficulty = pilotMinXp.MinimumContractDifficulty / 2m;
-
-                        string capPercentageText = "";
-
-                        ///The contract difficulty shown in the UI, which does not show any secret difficulty increases 
-                        ///for the mission.
-                        ///
-                        ///Should always have an override, but being safe since original BT code tests for null override sometimes.
-                        int contractDifficulty = contract.GetUiDifficulty();
-
-                        if (ShowXpPercentage() && contractDifficulty == pilotMinXp.MinimumContractDifficulty && pilotMinXp.MaxDifficultyPercentage <= .999m)
-                        {
-                            capPercentageText = Core.ModSettings.XpCapPercentageColors.GetCapPercentageText(pilotMinXp.MaxDifficultyPercentage);
-
-                        }
-
-                        if (contractDifficulty >= pilotMinXp.MinimumContractDifficulty)
-                        {
-
-                            PilotContractMinXp pilotContractMinXp = new PilotContractMinXp(pilotMinXp, contractDifficulty);
-
-                            int topColorIndex = GetLanceConfigurationContract.PilotContractMinXpTopEntries.FindIndex(x => x.Equals(pilotContractMinXp));
-
-                            string color = Core.ModSettings.DifficultyColors.GetColor(topColorIndex);
-                            displayText = ($"<color={color}>Diff: {skullMinXPCapDifficulty}</color>{capPercentageText}");
-
-                        }
-                        else
-                        {
-                            displayText = ($"Diff: {skullMinXPCapDifficulty}");
-                        }
+                        displayText = ($"Diff: {skullMinXPCapDifficulty}");
                     }
 
                     pilotText.Append(displayText);
