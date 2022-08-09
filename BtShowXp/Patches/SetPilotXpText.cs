@@ -60,7 +60,7 @@ namespace BtShowXp.Patches
                 Contract contract = GetLanceConfigurationContract.Contract;
 
                 //Contract screen only.
-                if (contract != null && Core.BTExtendedCeSettings.IsCapEnabled && Core.ModSettings.ShowPilotXpMinDifficulty)
+                if (Core.IsBexInstalled && contract != null && Core.BTExtendedCeSettings.XPCap && Core.ModSettings.ShowPilotXpMinDifficulty)
                 {
                     string displayText;
 
@@ -131,17 +131,25 @@ namespace BtShowXp.Patches
             XpPercentageDisplay xpPercentageDisplay = Core.ModSettings.XpPercentageDisplay;
 
 
-            switch (xpPercentageDisplay)
+            if(Core.IsBexInstalled)
             {
-                case XpPercentageDisplay.Always:
-                    return true;
-                case XpPercentageDisplay.Off:
-                    return false;
-                case XpPercentageDisplay.BasedOnPatchStatus:
-                    return Core.ModSettings.ShowPilotXpMinDifficultyWorkAround == false && DifficultyXPCapFix.PatchInstalled == true;
-                default:
-                    throw new ArgumentException($"Unexpected value {xpPercentageDisplay}", nameof(xpPercentageDisplay));
+                switch (xpPercentageDisplay)
+                {
+                    case XpPercentageDisplay.Always:
+                        return true;
+                    case XpPercentageDisplay.Off:
+                        return false;
+                    case XpPercentageDisplay.BasedOnPatchStatus:
+                        return Core.ModSettings.ShowPilotXpMinDifficultyWorkAround == false && (DifficultyXPCapFix.PatchInstalled ?? false) == true;
+                    default:
+                        throw new ArgumentException($"Unexpected value {xpPercentageDisplay}", nameof(xpPercentageDisplay));
+                }
             }
+            else
+            {
+                return false;
+            }
+
         }
 
         private static void XpDebugOutput(Pilot ___pilot, LocalizableText ___callsign, int skillTotalDelta, Contract contract, int minXPCapDifficulty, decimal maxLeveCapPercentage)

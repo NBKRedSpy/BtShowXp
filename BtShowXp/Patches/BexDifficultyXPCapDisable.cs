@@ -7,7 +7,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Ce = Extended_CE;
 
 namespace BtShowXp.Patches
 {
@@ -34,7 +33,7 @@ namespace BtShowXp.Patches
 
         public static bool Prepare()
         {
-            return BexXpCapPatchUtility.UseDifficutlyXpPatch();
+            return Core.IsBexInstalled && BexXpCapPatchUtility.UseDifficutlyXpPatch();
         }
         private static bool Prefix()
         {

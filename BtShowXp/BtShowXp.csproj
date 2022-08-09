@@ -39,12 +39,9 @@
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Extended_CE">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\Mods\BT_Extended_CE\Extended_CE.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="InControl">
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\InControl.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ModTek">
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\Mods\ModTek\ModTek.dll</HintPath>
@@ -77,6 +74,7 @@
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.UI.dll</HintPath>
@@ -120,6 +118,7 @@ robocopy /xc /xn /xo . "E:\Games\Steam\steamapps\common\BATTLETECH\Mods\$(Projec
 
 rd /q /s  $(ProjectName)
 robocopy . $(ProjectName) $(ProjectName).dll mod.json
+robocopy $(SolutionDir) $(ProjectName) README.md
 
 "C:\Program Files\7-Zip\7z.exe" a $(ProjectName).zip $(ProjectName)
 

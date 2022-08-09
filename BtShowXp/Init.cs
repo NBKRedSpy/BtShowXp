@@ -30,23 +30,19 @@ namespace BtShowXp
                     });
                 }
 
-
                 Core.ModSettings = modSettings;
 
-
-
-                var harmony = HarmonyInstance.Create("io.github.nbk_redspy.BtShowXp");
-                harmony.PatchAll(Assembly.GetExecutingAssembly());
 
                 //Try to load BTExtended CE settings if available.
                 try
                 {
-                    Core.BTExtendedCeSettings = LoadBTExtendedCeSettings();
+                    Core.BTExtendedCeSettings = BTExtendedCeSettings.LoadBexCeSettings();
                 }
                 catch (Exception e)
                 {
-                    Logger.Log(e.ToString());
 
+                    Logger.Log("Load exception");
+                    Logger.Log(e.ToString());
                     Core.BTExtendedCeSettings = BTExtendedCeSettings.BexNotFound();
                 }
 
@@ -55,7 +51,9 @@ namespace BtShowXp
                     Logger.LogDebug($"------------ {DateTime.Now}");
                 }
 
-                
+                var harmony = HarmonyInstance.Create("io.github.nbk_redspy.BtShowXp");
+                harmony.PatchAll(Assembly.GetExecutingAssembly());
+
             }
 
             catch (Exception ex)
@@ -64,36 +62,6 @@ namespace BtShowXp
                 throw;
             }
         }
-
-        public static BTExtendedCeSettings LoadBTExtendedCeSettings()
-        {
-
-
-            string settingsFilePath = Path.Combine(Utils.GetModPath(), @"..\BT_Extended_CE\mod.json");
-            
-            //Get the BEX settings
-            if (File.Exists(settingsFilePath))
-            {
-                //Please don't shame me for not using a DTO :)
-                BTXSettingsSettingsJson btxSettings = JsonConvert.DeserializeObject<BTXSettingsSettingsJson>(File.ReadAllText(settingsFilePath));
-
-
-                BTExtendedCeSettings settings = btxSettings.Settings;
-                settings.BTExtendedCeSettingsFound = true;
-                return settings;
-
-            }
-            else
-            {
-                return BTExtendedCeSettings.BexNotFound();
-
-            }
-        }
-
-
-        public class BTXSettingsSettingsJson
-        {
-            public BTExtendedCeSettings Settings { get; set; }
-        }
+       
     }
 }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Harmony;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,20 +10,67 @@ namespace BtShowXp
 {
     public class BTExtendedCeSettings
     {
-        public bool BTExtendedCeSettingsFound { get; set; } = false;
+        /// <summary>
+        /// True if BEX was detected and the settings were loaded.
+        /// </summary>
+        public bool BTExtendedCeInstalled { get; set; } = false;
 
         public List<int> XPDifficultyCaps { get; set; } = new List<int>();
 
         public bool XPCap { get; set; } = false;
 
-        public bool IsCapEnabled => XPCap && BTExtendedCeSettingsFound;
+        public float MinXPMultiplier { get; set; }
+
+        public int XPMax { get; set; }
+
 
         public static BTExtendedCeSettings BexNotFound()
         {
             return new BTExtendedCeSettings()
             {
-                BTExtendedCeSettingsFound = false
+                BTExtendedCeInstalled = false
             };
+        }
+
+
+        /// <summary>
+        /// Returns the BEX CE specific settings directly from the in process BEX settings.
+        /// </summary>
+        /// <returns></returns>
+        public static BTExtendedCeSettings LoadBexCeSettings()
+        {
+            try
+            {
+                Type CeCoreType = AccessTools.TypeByName("Extended_CE.Core");
+
+                if (CeCoreType != null)
+                {
+                    FieldInfo bexSettingsInfo = AccessTools.Field(CeCoreType, "Settings");
+                    object bexCeSettings = bexSettingsInfo.GetValue(null);
+                    Type ceSettingsType = bexCeSettings.GetType();
+
+
+                    //This mod's copy of the BEX CE settings.
+                    BTExtendedCeSettings ceSettings = new BTExtendedCeSettings();
+
+                    ceSettings.BTExtendedCeInstalled = true;
+                    ceSettings.XPDifficultyCaps = new List<int>((int[])AccessTools.Field(ceSettingsType, "XPDifficultyCaps").GetValue(bexCeSettings));
+                    ceSettings.XPCap = (bool)AccessTools.Field(ceSettingsType, "XPCap").GetValue(bexCeSettings);
+                    ceSettings.MinXPMultiplier = (float) AccessTools.Field(ceSettingsType, "MinXPMultiplier").GetValue(bexCeSettings);
+                    ceSettings.XPMax = (int)AccessTools.Field(ceSettingsType, "XPMax").GetValue(bexCeSettings);
+
+                    return ceSettings;
+                }
+                else
+                {
+                    return BexNotFound();
+                }
+            }
+            catch (Exception)
+            {
+                Logger.Log("Unable to load BEX settings");
+                throw;
+            }
         }
 
         /// <summary>
@@ -65,7 +114,7 @@ namespace BtShowXp
 
                 pilotMinXp.MaxDifficultyPercentage = (decimal)pilotXpCapDelta / currentXpCapRange;
                 
-                if(pilotMinXp.MaxDifficultyPercentage <= (decimal) Core.BexModSettings.MinXPMultiplier)
+                if(pilotMinXp.MaxDifficultyPercentage <= (decimal) this.MinXPMultiplier)
                 {
                     //next level is required to get more than minimum.
                     pilotMinXp.MinimumContractDifficulty++;

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Ce = Extended_CE;
 
 namespace BtShowXp.Patches
 {
@@ -20,18 +19,21 @@ namespace BtShowXp.Patches
     [HarmonyPatch(typeof(AAR_UnitStatusWidget), "FillInPilotData")]
     public static class DifficultyXPCapFix
     {
-        public static bool? PatchInstalled { get; private set; }
 
+        /// <summary>
+        /// Will be true if BEX is installed and the patch target matched the expected code.
+        /// </summary>
+        public static bool? PatchInstalled { get; private set; }
 
         public static bool Prepare()
         {
-            if(PatchInstalled.HasValue)
+            if (PatchInstalled.HasValue)
             {
                 return PatchInstalled.Value;
             }
             else
             {
-                PatchInstalled = BexXpCapPatchUtility.UseDifficutlyXpPatch();
+                PatchInstalled = Core.IsBexInstalled && BexXpCapPatchUtility.UseDifficutlyXpPatch(); 
                 return PatchInstalled.Value;
             }
         }
@@ -52,15 +54,15 @@ namespace BtShowXp.Patches
             int totalXp = ___UnitData.pilot.TotalXP;
             int unspentXp = ___UnitData.pilot.UnspentXP;
             int index = Math.Min(9, Math.Max(0, ___contract.Override.finalDifficulty - 1));
-            int xpDifficultyCap = Core.BexModSettings.XPDifficultyCaps[index];
+            int xpDifficultyCap = Core.BTExtendedCeSettings.XPDifficultyCaps[index];
             int num1 = xpDifficultyCap;
             if (index > 0)
-                num1 = Core.BexModSettings.XPDifficultyCaps[index - 1];
+                num1 = Core.BTExtendedCeSettings.XPDifficultyCaps[index - 1];
             float val2 = (float)xpEarned;
             if (!isClan)
             {
                 if (totalXp >= xpDifficultyCap)
-                    val2 *= Core.BexModSettings.MinXPMultiplier;
+                    val2 *= Core.BTExtendedCeSettings.MinXPMultiplier;
                 else if (totalXp > num1)
                 {
                     int num2 = xpDifficultyCap - totalXp;
@@ -68,13 +70,13 @@ namespace BtShowXp.Patches
 
                     //The one line of code that needs to change
                     //val2 *= Math.Max(Core.BexModSettings.MinXPMultiplier, (float)(num2 / num3));
-                    val2 *= Math.Max(Core.BexModSettings.MinXPMultiplier, ((float)num2 / num3));
+                    val2 *= Math.Max(Core.BTExtendedCeSettings.MinXPMultiplier, ((float)num2 / num3));
                 }
             }
-            if (___simState.Constants.Story.MaximumDebt >= 42 && (double)totalXp + (double)val2 >= (double)Core.BexModSettings.XPMax && Core.BexModSettings.XPCap)
+            if (___simState.Constants.Story.MaximumDebt >= 42 && (double)totalXp + (double)val2 >= (double)Core.BTExtendedCeSettings.XPMax && Core.BTExtendedCeSettings.XPCap)
             {
-                val2 = (float)Math.Min(xpEarned, Core.BexModSettings.XPMax - totalXp);
-                    ___UnitData.pilot.StatCollection.Set<int>("ExperienceUnspent", Math.Max(0, Core.BexModSettings.XPMax - totalXp));
+                val2 = (float)Math.Min(xpEarned, Core.BTExtendedCeSettings.XPMax - totalXp);
+                    ___UnitData.pilot.StatCollection.Set<int>("ExperienceUnspent", Math.Max(0, Core.BTExtendedCeSettings.XPMax - totalXp));
             }
             else
                     ___UnitData.pilot.StatCollection.Set<int>("ExperienceUnspent", unspentXp - (xpEarned - (int)val2));

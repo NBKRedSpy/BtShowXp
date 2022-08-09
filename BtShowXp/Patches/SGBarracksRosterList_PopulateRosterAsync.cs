@@ -19,6 +19,7 @@ namespace BtShowXp.Patches
         /// Is set if the list is in the Lance configuration screen and has a contract (which it always should).
         /// The value will be null for all other parent screens.
         /// </summary>
+        /// <remarks>This is used by other patches as it is the only place it is available</remarks>
         public static Contract Contract { get; set; }
 
         /// <summary>
@@ -26,6 +27,7 @@ namespace BtShowXp.Patches
         /// PilotXp levels ordered by percentage, then by min contract difficulty.
         /// Only contains the top levels to uniquely color.
         /// </summary>
+        /// <remarks>Used by the Pilot XP text patch</remarks>
         public static List<PilotContractMinXp> PilotContractMinXpTopEntries { get; set; }
 
         /// <summary>
@@ -42,7 +44,7 @@ namespace BtShowXp.Patches
                 {
                     Contract = lanceConfiguratorPanel.activeContract;
 
-                    if (Core.ModSettings.ShowPilotXpMinDifficulty)
+                    if (Core.IsBexInstalled && Core.ModSettings.ShowPilotXpMinDifficulty)
                     {
                         //emulate 5 star mission is clan, else use the difficulty that is displayed to the user.
                         int uiDifficulty = Contract.TargetFactionIsClan() ? Core.ClanDifficultyEmulation : Contract.GetUiDifficulty();

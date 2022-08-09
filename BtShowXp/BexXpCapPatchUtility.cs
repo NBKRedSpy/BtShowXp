@@ -8,13 +8,22 @@ using System.Threading.Tasks;
 
 namespace BtShowXp
 {
+    
+    /// <summary>
+    /// Utility to determine if the BEX CE original code has changed since this was written.
+    /// </summary>
     public static class BexXpCapPatchUtility
     {
 
+        /// <summary>
+        /// The hash for the original BEX CE code at the time of writing.
+        /// If the hash does not match but the code has not changed, up date this hash.
+        /// Note - Recompiling BEX can cause the .NET compiler to output different IL for the function even though the C# code did not change.
+        /// </summary>
         private const string OriginalXpCapMethodIlHash = "DJrdfbYWfHJnfvNiaGAY5j0dmF+7SGSAbP5wGGxtFNI=";
 
         /// <summary>
-        /// returns true if the UseBexXpCapFix is true, the BEX_CE dll is loaded
+        /// Returns true if the UseBexXpCapFix is true and the BEX_CE dll is loaded
         /// and the original code matches the hash created at the time of this function's writing.
         /// </summary>
         /// <returns></returns>
@@ -58,6 +67,11 @@ namespace BtShowXp
             return Convert.ToBase64String(hash);
         }
 
+
+        /// <summary>
+        /// Returns the nested BEX Patch "AAR_UnitStatusWidget_FillInPilotData" as it cannot be accessed directly.
+        /// </summary>
+        /// <returns></returns>
         public static MethodInfo GetBexXpCapMethod()
         {
 
