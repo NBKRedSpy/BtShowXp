@@ -2,7 +2,7 @@
 
 Optionally displays the Pilot's Total XP, XP Corruption, minimum mission difficulty to earn full XP with BEX CE's XP cap, and/or BEX's Level cap percentage of XP award.
 
-When configurating a lance for a contract, the Difficulty text will be Green if the pilot will get full XP from the current contract.  If the pilot is exactly at the XP cap level of the mission, the percentage of the max XP for the mission will be displayed.
+When configuring a lance for a contract, the Difficulty text will be Green if the pilot will get full XP from the current contract.  If the pilot is exactly at the XP cap level of the mission, the percentage of the max XP for the mission will be displayed.
 
 Other features:
 * Contains a temporary fix for BEX which restores the "percentage of XP awarded" logic.
@@ -73,15 +73,15 @@ Default Colors:
 
 Before resetting the XP, try saving and reloading the game.  This will sometimes correct the XP.
 
-## Dislaimers
+## Disclaimers
 It is recommend to make a backup of the game saves before using.  This has been tested locally and appears to work correctly, but there could be unexpected consequences.
 
 The Battletech campaign save directory for a Steam install is at Steam\userdata\3847327\637090\remote\C0\SGS1 . 
 
-I am unsure at this point why the Spent XP vs Unspent XP gets out of sync over time with various mods so user beware that there may be some reason for the mismatch that I am unaware of.  
+I am unsure at this point why the Spent XP vs Unspent XP gets out of sync over time.  There may be some reason for the mismatch that I am unaware of.  
 
 ## Usage
-If a pilot has corrupt XP (as shown by red text), the pilot can be reset by going to the barracks by clicking the pilot's portrait while holding down control (ctrl+click).
+To fix a pilot's corrupt XP, go to the barracks and hold down ctrl and click the pilot's portrait.  
 
 Make sure there pilot is not currently selected or the click will not work.  This is a known issue.
 Currently each pilot must be changed individually.
@@ -107,7 +107,7 @@ Safe to add to and remove from existing saves.
 
 **Update**:  The default settings of this mod includes a temporary fix for BEX's XP Cap bug.  This section describes the bug, but is effectively mitigated.
 
-Currently BEX contains a bug where a pilot will never recieve a percentage of XP when at the end of a XP level.
+Currently BEX contains a bug where a pilot will never receive a percentage of XP when at the end of a XP level.
 
 Effectively this requires .5 more difficulty to obtain XP beyond the XP Cap minimum.
 However, when the pilot requires 5 star missions, this bug will effectively limit the pilot to the XP Cap minimum XP (10% by default).
