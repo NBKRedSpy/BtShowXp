@@ -15,7 +15,8 @@ The rest of the document contains various customization and install options, whi
 ![Pilot List](Media/PilotList.png)
 
 
-
+# BEX Version
+If running the BEX mod (aka BattleTech Extended - CE), use the BTShowXP-BEX version in the downloads.
 
 # Upgrading
 For users upgrading from versions prior to 1.1, it is recommended to overwrite the mod.json in the BTShowXp install directory.
@@ -113,3 +114,7 @@ Effectively this requires .5 more difficulty to obtain XP beyond the XP Cap mini
 However, when the pilot requires 5 star missions, this bug will effectively limit the pilot to the XP Cap minimum XP (10% by default).
 
 The bug has been accepted by the BEX team.
+
+# Change Log
+## 1.3.2.0
+Added a CAC-C compatible version.
