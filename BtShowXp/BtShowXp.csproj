@@ -32,24 +32,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\0Harmony.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Extended_CE, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\Mods\BT_Extended_CE\Extended_CE.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="InControl">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\InControl.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\InControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ModTek">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\Mods\ModTek\ModTek.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\Mods\ModTek\ModTek.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -61,23 +66,23 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\BATTLETECH\BattleTech_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -113,8 +118,8 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y "$(TargetPath)" "E:\Games\Steam\steamapps\common\BATTLETECH\Mods\$(ProjectName)\"
-robocopy /xc /xn /xo . "E:\Games\Steam\steamapps\common\BATTLETECH\Mods\$(ProjectName)\\" mod.json
+    <PostBuildEvent>xcopy /y "$(TargetPath)" "D:\Games\Steam\steamapps\common\BATTLETECH\Mods\$(ProjectName)\"
+robocopy /xc /xn /xo . "D:\Games\Steam\steamapps\common\BATTLETECH\Mods\$(ProjectName)\\" mod.json
 
 rd /q /s  $(ProjectName)
 robocopy . $(ProjectName) $(ProjectName).dll mod.json

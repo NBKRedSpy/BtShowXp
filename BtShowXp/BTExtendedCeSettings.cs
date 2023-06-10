@@ -41,9 +41,16 @@ namespace BtShowXp
         {
             try
             {
-                Type CeCoreType = AccessTools.TypeByName("Extended_CE.Core");
+				//BEX CAC-C version - This version requires the Extended_CE to be referenced by the project.
+				//BEX CAC-C is using a transpiler on Extended_CE.Core, which I believe is preventing the AccessTools from
+				//  finding the type by name.  The mod works fine without CAC-C.
 
-                if (CeCoreType != null)
+				//I believe the issue is from this code:
+                //BTX_CAC_Compatibility\BTX_CAC_CompatibilityDll\BTX_CAC_CompatibilityDll\CU2ComponentFix.cs
+
+				Type CeCoreType = typeof(Extended_CE.Core);
+
+				if (CeCoreType != null)
                 {
                     FieldInfo bexSettingsInfo = AccessTools.Field(CeCoreType, "Settings");
                     object bexCeSettings = bexSettingsInfo.GetValue(null);
